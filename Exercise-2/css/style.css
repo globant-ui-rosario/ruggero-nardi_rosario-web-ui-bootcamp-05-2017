@@ -1,38 +1,58 @@
 * {
     font: 14px verdana;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
-header {
-    text-align: center;
-    background: lightgreen ;
-}
-nav {
-    background: mediumseagreen;
-}
-aside {
-    background: mediumseagreen;
-}
-footer {
-    text-align: center;
-    background: lightgreen;
+body {
+    background-color: #444444;
 }
 .header {
-    font-size: 46px;
+    text-align: center;
+    background-color: grey;
+    border-radius: 15px;
+    margin: 10px;
+    padding: 20px;
 }
-.footer {
-    font-size: 10px;
-}
-.content {
-    font-size: 14px;
+.main {
+    text-align: center;
+    display: flex;
+    justify-content: left;
 }
 .navigation {
-    font-size: 12px;
+    background-color: grey;
+    border-radius: 15px;
+    margin: 10px;
+    width: 150px;
+}
+.content {
+    background-color: grey;
+    border-radius: 15px;
+    margin: 10px;
+    flex: 1;
 }
 .sidebar {
-    font-size: 10px;
+    background-color: grey;
+    border-radius: 15px;
+    margin: 10px;
+    width: 150px;
 }
-[class$="r"] {
-    background-color: magenta;
+.content header, .content article, .content footer {
+    background-color: lightgrey;
+    border-radius: 15px;
+    margin: 5px; 
 }
-[class*="a"] {
-    background-color: blue;
+.content article {
+    padding: 40px;
+}
+.content header, .content footer {
+    padding: 10px;
+}
+.footer{
+    clear: left;
+    text-align: center;
+    background-color: grey;
+    border-radius: 15px;
+    margin: 10px;
+    padding: 15px;
 }
