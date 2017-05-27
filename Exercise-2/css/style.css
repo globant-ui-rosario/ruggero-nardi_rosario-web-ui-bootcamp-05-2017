@@ -1,0 +1,17 @@
+* {
+    font: 14px verdana;
+}
+header {
+    text-align: center;
+    background: lightgreen;
+}
+nav {
+    background: mediumseagreen;
+}
+aside {
+    background: mediumseagreen;
+}
+footer {
+    text-align: center;
+    background: lightgreen;
+}
