@@ -1,9 +1,9 @@
 * {
-    font: 14px verdana;
+    font: 14px verdana !important;
 }
 header {
     text-align: center;
-    background: lightgreen;
+    background: lightgreen ;
 }
 nav {
     background: mediumseagreen;
@@ -14,4 +14,25 @@ aside {
 footer {
     text-align: center;
     background: lightgreen;
+}
+.header {
+    font-size: 46px;
+}
+.footer {
+    font-size: 10px;
+}
+.content {
+    font-size: 14px;
+}
+.navigation {
+    font-size: 12px;
+}
+.sidebar {
+    font-size: 10px;
+}
+[class$="r"] {
+    background-color: magenta;
+}
+[class*="a"] {
+    background-color: blue;
 }
