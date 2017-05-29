@@ -4,7 +4,8 @@
     box-sizing: border-box;
 }
 body {
-    background: #333333 url("http://bgfons.com/upload/pattern_texture1164.jpg?i=1") no-repeat fixed center;
+    background-color: #555555;
+    align-content: center;
 }
 .header{
     margin: auto;
@@ -19,17 +20,20 @@ body {
 }
 .header div{
     display: block;
+    float: right;
+    width: 300px;
+    height: 150px;
 }
-.header p {
-    text-align: right; 
+.header p { 
     color: #FF3300;
-    font-size: 25px;
+    font-size: 20px;
     text-shadow: 1px 1px 3px black;
 }
 .container {
-    position: relative;
-    margin: 0 auto;
     width: 1200px;
+    clear: right;
+    position: relative;
+    margin: auto;
 }
 .photo img {
     max-width: 100%;
@@ -75,3 +79,14 @@ footer {
     height: 100px;
     text-align: left;
 }
+@media screen and (max-width: 960px) {
+    .container {
+        width: 100%;
+    }
+    .header {
+        width: 100%;
+    }
+    footer {
+        width: 100%;
+    }
+} 
