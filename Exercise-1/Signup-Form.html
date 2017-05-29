@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Sign-up Form</title>
+    </head>
+    <body>
+       <section>
+            <form id="Sign-up-form" action="" method="post">
+                <h2>Sign up form</h2>
+                <h3>All fields are requiered</h3>
+                <fieldset>
+                    <legend>Requiered Information</legend>
+                    <div>
+                        <label>
+                            <span>First Name: </span>
+                            <input type="text" required="required" autofocus />
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            <span>Last Name: </span>
+                            <input type="text" required="required" />
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            <span>Birthday: </span>
+                            <input type="date" placeholder="YYYY-MM-DD" required="required" />
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            <span>Email: </span>
+                            <input type="email" placeholder="example@example.com" required="required" />
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            <span>Favourite sport: </span>
+                            <select required="required">
+                                <option value="">Select your Sport</option>
+                                <option value="Football">Football</option>
+                                <option value="Golf">Golf</option>
+                                <option value="Basket">Basket</option>
+                                <option value="Baseball">Baseball</option>
+                            </select>
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            <span>Comments: </span>
+                            <textarea placeholder="Write a small bio here..." required="required"></textarea>
+                        </label>
+                    </div>
+                    <div>
+                        <button name="submit" type="submit">Submit</button>
+                        <button name="reset" type="reset">Clear Form</button>
+                    </div>
+                </fieldset>
+            </form>
+       </section>
+    </body>  
+</html>
