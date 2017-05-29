@@ -9,30 +9,29 @@ body {
 }
 .header{
     margin: auto;
-    width: 1200px;
+    width: 90%;
+    max-width: 1000px;
     height: 300px;
 }
-.header h1{
+p.header-title{
     text-align: left;
     color: #ff4477;
     font-size: 55px;
     text-shadow: 0 0 10px  black ;
 }
-.header div{
+p.header-subtitle { 
     display: block;
     float: right;
     width: 300px;
     height: 150px;
-}
-.header p { 
     color: #FF3300;
     font-size: 20px;
     text-shadow: 1px 1px 3px black;
 }
 .container {
-    width: 1200px;
     clear: right;
-    position: relative;
+    width: 90%;
+    max-width: 1200px;
     margin: auto;
 }
 .photo img {
@@ -44,8 +43,8 @@ body {
     width: 400px;
     height: 300px;
     margin: auto;
-    display: block;
     float: left;
+    display: block;
 }
 .hoverScreen{
     display: block;
@@ -54,23 +53,29 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
+    transition: background-color 0.3s ease-in-out;
 }
 .hoverScreen p {
-    display: none;
+    display: block;
     margin: auto;
     position: absolute;
-    background-color: rgba(0,0,0,0.5);
-    color: greenyellow;
-    text-shadow: 2px 2px black;
+    color: transparent;
     width: 100%;
     height: 25%;
     font-size: 30px;
+    z-index: 1000;
     left: 0;
     top: 0;
     text-align: center;
+    transition: all 0.3s ease-in-out;
 }
-.hoverScreen:hover>p {
+.hoverScreen:hover p {
     display: block;
+    color: greenyellow;
+    text-shadow: 2px 2px black;
+}
+.hoverScreen:hover {
+    background-color: rgba(0,0,0,0.5);
 }
 footer {
     width: 1200px;
@@ -79,14 +84,3 @@ footer {
     height: 100px;
     text-align: left;
 }
-@media screen and (max-width: 960px) {
-    .container {
-        width: 100%;
-    }
-    .header {
-        width: 100%;
-    }
-    footer {
-        width: 100%;
-    }
-} 
