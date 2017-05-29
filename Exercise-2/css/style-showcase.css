@@ -29,9 +29,11 @@ p.header-subtitle {
     text-shadow: 1px 1px 3px black;
 }
 .container {
-    clear: right;
+    clear: both;
+    display: block;
+    text-align: center;
     width: 90%;
-    max-width: 1200px;
+    max-width: 1300px;
     margin: auto;
 }
 .photo img {
@@ -43,8 +45,7 @@ p.header-subtitle {
     width: 400px;
     height: 300px;
     margin: auto;
-    float: left;
-    display: block;
+    display: inline-block;
 }
 .hoverScreen{
     display: block;
