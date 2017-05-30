@@ -47,7 +47,7 @@ p.header-subtitle {
     margin: auto;
     display: inline-block;
 }
-.hoverScreen{
+.hover-screen{
     display: block;
     position: absolute;
     top: 0;
@@ -56,7 +56,7 @@ p.header-subtitle {
     height: 100%;
     transition: background-color 0.3s ease-in-out;
 }
-.hoverScreen p {
+.hover-screen p {
     display: block;
     margin: auto;
     position: absolute;
@@ -70,12 +70,12 @@ p.header-subtitle {
     text-align: center;
     transition: all 0.3s ease-in-out;
 }
-.hoverScreen:hover p {
+.hover-screen:hover p {
     display: block;
     color: greenyellow;
     text-shadow: 2px 2px black;
 }
-.hoverScreen:hover {
+.hover-screen:hover {
     background-color: rgba(0,0,0,0.5);
 }
 footer {
