@@ -41,6 +41,7 @@ header {
   background-color: #00aaff;
 }
 .content {
+  position: relative;
   margin: auto;
   text-align: center;
   width: 90%;
@@ -67,6 +68,7 @@ header {
 }
 .hidden-content {
   clear: both;
+  min-height: 230px;
 }
 .hidden-text {
   visibility: hidden;
@@ -84,5 +86,13 @@ header {
   font-size: 200px;
   text-shadow: 0 0 30px navy;
   transition: all 2s ease-in-out;
+}
+.button {
+  position: absolute;
+  left: 0;
+  color: green;
+  text-shadow: 0 0 3px greenyellow;
+  display: block;
+  margin: 0;
 }
 
