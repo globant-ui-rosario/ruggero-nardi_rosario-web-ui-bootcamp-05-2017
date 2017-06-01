@@ -68,11 +68,12 @@ function pepe(event) {
       search.send();
       search.onload = function () {
         let data = JSON.parse(search.responseText);
-        const list=document.getElementById("search-results");
-        for (i=0; i<10;i++){
+        const list = document.getElementById("search-results");
+        for (i = 0; i < 10; i++) {
           newli = document.createElement("li");
           newlink = document.createElement("a");
           newlink.setAttribute("href", data.items[0].url);
+          newlink.setAttribute("target", "_blank");
           result = document.createTextNode(data.items[i].owner.login);
           newlink.appendChild(result);
           newli.appendChild(newlink);
@@ -82,3 +83,33 @@ function pepe(event) {
     })
   }
 }
+
+let matrix = [
+  ["First Name", "Last Name", "Birthday", "E-mail"],
+  ["Robert", "De Niro", "17-August-1943", "DeniroFake@gmail.com"],
+  ["Jhon", "Smith", "24-May-1968", "JhonSmith@something.com"],
+];
+
+(function createTable(matrix) {
+  let ref = document.getElementById("table");
+  for (i = 0; i < matrix.length; i++) {
+    let row = document.createElement("tr");
+    for (j = 0; j < matrix[i].length; j++) {
+      if (i == 0) {
+        let tag = document.createElement("th");
+        tag.setAttribute("class", "table h");
+        let content = document.createTextNode(matrix[i][j]);
+        tag.appendChild(content);
+        row.appendChild(tag);
+      } else {
+        let ref = document.getElementById("table");
+        let tag = document.createElement("td");
+        tag.setAttribute("class", "table d");
+        let content = document.createTextNode(matrix[i][j]);
+        tag.appendChild(content);
+        row.appendChild(tag);
+      }
+    }
+    ref.appendChild(row);
+  }
+}(matrix));
