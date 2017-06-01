@@ -118,7 +118,8 @@ header {
 .search-results{
   margin: 15px 15%;
 }
-.search-results, .search-results li a {
+.search-results,
+.search-results li a {
   list-style: circle;
   text-decoration: none;
   text-align: left;
@@ -134,7 +135,9 @@ header {
   width: 90%;
   max-width: 1000px;
 }
-.table, th, td {
+.table, 
+th, 
+td {
   border: 2px solid black;
   border-collapse: collapse;
   padding: 10px;
