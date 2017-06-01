@@ -36,6 +36,9 @@ header {
   margin: auto;
   height: 100%;
   display: inline-block;
+  line-height: 50px;
+  text-shadow: 0 0 5px navy;
+  transition: all 200ms ease;
 }
 .navigation li span:hover {
   background-color: #00aaff;
@@ -86,6 +89,21 @@ header {
   font-size: 200px;
   text-shadow: 0 0 30px navy;
   transition: all 2s ease-in-out;
+}
+.small-text {
+  text-align: center;
+  margin: auto;
+  color: rgba(0, 0, 0, 1);
+  font-size: 50px;
+  text-shadow: 0 0 30px navy;
+}
+.hidden-text-container-error {
+  clear: both;
+  height: 230px;
+  line-height: 230px;
+  background-color: red;
+  border-radius: 10%;
+  box-shadow: 0 0 60px red;
 }
 .button {
   position: absolute;
