@@ -55,12 +55,14 @@ header {
   text-shadow: 3px 3px 10px black;
 }
 .content .left{
+  min-height: 300px;
   width: 50%;
   margin: auto;
   display: block;
   float: left;
 }
 .content .right{
+  min-height: 300px;
   width: 50%;
   margin: auto;
   display: block;
@@ -113,4 +115,18 @@ header {
   display: block;
   margin: 0;
 }
+.search-results{
+  margin: 15px 15%;
+}
+.search-results, .search-results li a {
+  list-style: circle;
+  text-decoration: none;
+  text-align: left;
+  font-size: 1.2em;
+  color: purple;
+}
+.search-results li a:hover {
+  color: #C000C0;
+}
+
 
