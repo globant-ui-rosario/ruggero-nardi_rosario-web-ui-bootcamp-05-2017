@@ -19,20 +19,21 @@ class EventEmitter {
     delete this.events[eventName][index];
   }
 }
-class Movie {
+class Movie extends EventEmitter {
   constructor(title, year, duration) {
+    super();
     this.title = title;
     this.year = year;
     this.duration = duration;
   }
   play() {
-    console.log('play');
+    this.emit('play');
   }
   pause() {
-    console.log('pause');
+    this.emit('pause');
   }
   resume() {
-    console.log('resume');
+    this.emit('resume');
   }
 }
 class Actor {
