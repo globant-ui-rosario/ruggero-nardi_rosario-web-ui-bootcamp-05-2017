@@ -10,9 +10,11 @@ class EventEmitter {
     }
   }
   emit(eventName) {
-    this.events[eventName].forEach(function (callback) {
-      console.log('Triggered callback' + callback);
-    });
+    if (this.events[eventName]) {
+      this.events[eventName].forEach(function (callback) {
+        console.log('Triggered callback ' + callback);
+      });
+    }
   }
   off(eventName, callback) {
     let index = this.events[eventName].indexOf(callback);
@@ -25,6 +27,7 @@ class Movie extends EventEmitter {
     this.title = title;
     this.year = year;
     this.duration = duration;
+    this.cast = {};
   }
   play() {
     this.emit('play');
@@ -34,6 +37,9 @@ class Movie extends EventEmitter {
   }
   resume() {
     this.emit('resume');
+  }
+  addCast(actor) {
+    /////
   }
 }
 class Actor {
