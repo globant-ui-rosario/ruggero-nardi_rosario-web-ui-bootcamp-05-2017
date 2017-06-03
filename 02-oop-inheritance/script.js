@@ -11,8 +11,8 @@ class EventEmitter {
   }
   emit(eventName) {
     if (this.events[eventName]) {
-      this.events[eventName].forEach(function (callback) {
-        console.log('Triggered callback ' + callback);
+        this.events[eventName].forEach( callback => {
+        callback(eventName);
       });
     }
   }
@@ -40,8 +40,8 @@ class Movie extends EventEmitter {
   }
   addCast(actor) {
     if (typeof actor === 'object' && actor.length) {
-      for (let i = 0; i < actor.length; i++) {
-        this.cast.push(actor[i]);
+      for (let ii = 0; ii < actor.length; ii++) {
+        this.cast.push(actor[ii]);
       }
     } else if (typeof actor === 'object' && !actor.length) {
       this.cast.push(actor);
@@ -56,3 +56,38 @@ class Actor {
     this.age = age;
   }
 }
+class Logger {
+  constructor() {
+  }
+  log(info) {
+    let logRecord = 'The ' + info + ' event has been emitted';
+    console.log(logRecord);
+  }
+}
+let social = {
+  share: function (friendName) {
+    return friendName + ' share ' + this.title;
+  },
+  like: function (friendName) {
+    return friendName + ' like ' + this.title;
+  }
+}
+function extend(target) {
+  if (!arguments[1]) {
+    return;
+  }
+  for (var ii = 0; ii < arguments.length; ii++) {
+    var source = arguments[ii];
+    for (var property in source) {
+      if (!target[property] && source.hasOwnProperty(property)) {
+        target[property] = source[property];
+      }
+    }
+  }
+}
+const terminator = new Movie('Terminator I', 1985, 60);
+const lg = new Logger;
+extend(terminator, social);
+terminator.on("play", lg.log);
+terminator.on("pause", lg.log);
+terminator.on("resume", lg.log);
