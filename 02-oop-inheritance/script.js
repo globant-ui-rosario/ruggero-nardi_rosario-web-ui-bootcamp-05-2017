@@ -39,7 +39,7 @@ class Movie extends EventEmitter {
     this.emit('resume');
   }
   addCast(actor) {
-    /////
+    this.cast[actor.name] = actor;
   }
 }
 class Actor {
