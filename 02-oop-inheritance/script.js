@@ -27,7 +27,7 @@ class Movie extends EventEmitter {
     this.title = title;
     this.year = year;
     this.duration = duration;
-    this.cast = {};
+    this.cast = [];
   }
   play() {
     this.emit('play');
@@ -39,7 +39,15 @@ class Movie extends EventEmitter {
     this.emit('resume');
   }
   addCast(actor) {
-    this.cast[actor.name] = actor;
+    if (typeof actor === 'object' && actor.length) {
+      for (let i = 0; i < actor.length; i++) {
+        this.cast.push(actor[i]);
+      }
+    } else if (typeof actor === 'object' && !actor.length) {
+      this.cast.push(actor);
+    } else {
+      console.log("Wrong type of argument");
+    }
   }
 }
 class Actor {
