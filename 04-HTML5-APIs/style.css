@@ -1,0 +1,9 @@
+.button {
+  display: block;
+  margin: 10px;
+}
+.text {
+  height: 5em;
+  width: 40em;
+  display: block;
+}
