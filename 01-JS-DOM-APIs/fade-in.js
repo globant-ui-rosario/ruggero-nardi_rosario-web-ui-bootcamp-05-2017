@@ -13,8 +13,8 @@ let config = {
 button.addEventListener('click', htmlUpdate);
 
 function htmlUpdate() {
-  let ObjectOfData = promiseFunction(config);
-  ObjectOfData.then(function (result) {
+  let objectOfData = promiseFunction(config);
+  objectOfData.then(function (result) {
     result.send();
     result.onload = function () {
       let data = JSON.parse(result.responseText);
@@ -40,7 +40,7 @@ function promiseFunction(configObject) {
     } else {
       data = null;
     }
-    if (data !== null) {
+    if (data) {
       resolve(data);
     } else {
       reject(Error('Unexpected Error!'));
@@ -52,12 +52,10 @@ function promiseFunction(configObject) {
 const searchBar = document.getElementById('search-bar');
 const searchButton = document.getElementById('search-button');
 
-searchButton.addEventListener('click', pepe);
+searchButton.addEventListener('click', search);
 
-function pepe(event) {
-  console.log('in pepe');
+function search(event) {
   let value = searchBar.value;
-  console.log(value);
   if (value) {
     let configObject = {
       method: 'GET',
@@ -69,12 +67,12 @@ function pepe(event) {
       search.onload = function () {
         let data = JSON.parse(search.responseText);
         const list = document.getElementById('search-results');
-        for (i = 0; i < 10; i++) {
+        for (let listCounter = 0; listCounter < 10; listCounter++) {
           newli = document.createElement('li');
           newlink = document.createElement('a');
           newlink.setAttribute('href', data.items[0].url);
           newlink.setAttribute('target', '_blank');
-          result = document.createTextNode(data.items[i].owner.login);
+          result = document.createTextNode(data.items[listCounter].owner.login);
           newlink.appendChild(result);
           newli.appendChild(newlink);
           list.appendChild(newli);
@@ -92,20 +90,20 @@ let matrix = [
 
 (function createTable(matrix) {
   let ref = document.getElementById('table');
-  for (i = 0; i < matrix.length; i++) {
+  for (let rowCounter = 0; rowCounter < matrix.length; rowCounter++) {
     let row = document.createElement('tr');
-    for (j = 0; j < matrix[i].length; j++) {
-      if (i === 0) {
+    for (let columnCounter = 0; columnCounter < matrix[rowCounter].length; columnCounter++) {
+      if (rowCounter === 0) {
         let tag = document.createElement('th');
         tag.setAttribute('class', 'table h');
-        let content = document.createTextNode(matrix[i][j]);
+        let content = document.createTextNode(matrix[rowCounter][columnCounter]);
         tag.appendChild(content);
         row.appendChild(tag);
       } else {
         let ref = document.getElementById('table');
         let tag = document.createElement('td');
         tag.setAttribute('class', 'table d');
-        let content = document.createTextNode(matrix[i][j]);
+        let content = document.createTextNode(matrix[rowCounter][columnCounter]);
         tag.appendChild(content);
         row.appendChild(tag);
       }
