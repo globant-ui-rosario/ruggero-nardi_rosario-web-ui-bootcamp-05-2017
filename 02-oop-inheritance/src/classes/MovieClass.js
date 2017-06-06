@@ -18,8 +18,8 @@ export class Movie extends EventEmitter {
   }
   addCast(actor) {
     if (typeof actor === 'object' && actor.length) {
-      for (let ii = 0; ii < actor.length; ii++) {
-        this.cast.push(actor[ii]);
+      for (let index = 0; index < actor.length; index++) {
+        this.cast.push(actor[index]);
       }
     } else if (typeof actor === 'object' && !actor.length) {
       this.cast.push(actor);
