@@ -1,0 +1,6 @@
+.canvas-container {
+  border: 1px solid brown;
+  width: fit-content;
+  display: block;
+  margin: auto;
+}
