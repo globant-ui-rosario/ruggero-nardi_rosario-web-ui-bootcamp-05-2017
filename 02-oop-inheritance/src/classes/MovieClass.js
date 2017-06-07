@@ -24,7 +24,7 @@ export class Movie extends EventEmitter {
     } else if (typeof actor === 'object' && !actor.length) {
       this.cast.push(actor);
     } else {
-      console.log("Wrong type of argument");
+      console.log('Wrong type of argument');
     }
   }
 }

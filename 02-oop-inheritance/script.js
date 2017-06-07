@@ -46,7 +46,7 @@ class Movie extends EventEmitter {
     } else if (typeof actor === 'object' && !actor.length) {
       this.cast.push(actor);
     } else {
-      console.log("Wrong type of argument");
+      console.log('Wrong type of argument');
     }
   }
 }
@@ -88,6 +88,6 @@ function extend(target) {
 const terminator = new Movie('Terminator I', 1985, 60);
 const lg = new Logger;
 extend(terminator, social);
-terminator.on("play", lg.log);
-terminator.on("pause", lg.log);
-terminator.on("resume", lg.log);
+terminator.on('play', lg.log);
+terminator.on('pause', lg.log);
+terminator.on('resume', lg.log);
