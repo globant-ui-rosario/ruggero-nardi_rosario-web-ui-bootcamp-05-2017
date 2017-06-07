@@ -5,8 +5,8 @@ const connectionButton = document.getElementById('connection-button');
 function start() {
   const buttonSave = document.getElementById('button-save');
   const buttonClear = document.getElementById('button-clear');
-  textArea.addEventListener("dragover", makeDragable);
-  textArea.addEventListener("drop", updateValue);
+  textArea.addEventListener('dragover', makeDragable);
+  textArea.addEventListener('drop', updateValue);
   buttonSave.addEventListener('click', addObject);
   buttonClear.addEventListener('click', clearDB);
   init();
@@ -46,7 +46,7 @@ function addObject() {
     let key = keyStr.concat(addtext.result);
     localStorage.setItem(key, text);
   };
-  document.getElementById('text').value = "";
+  document.getElementById('text').value = '';
 }
 function clearDB() {
   let transactionRW = textdb.transaction(['text-area'], 'readwrite');
@@ -66,20 +66,20 @@ function onOpen() {
   display('<span style="color: green;">CONNECTED</span>');
 }
 function onMessage(event) {
-  display('<span style="color: blue;">RESPONSE: ' + event.data + '</span>');
+  display('<span style="color: blue";>RESPONSE: ' + event.data + '</span>');
 }
 function onError(event) {
   display('<span style="color: red;">ERROR:</span> ' + event.data);
 }
 function sendMsg() {
   let text = textArea.value;
-  display("SENT: " + text);
+  display('SENT: ' + text);
   websocket.send(text);
-  textArea.value = "";
+  textArea.value = '';
 }
 function display(message) {
   const output = document.getElementById('display-box');
-  let outputContainer = document.createElement("p");
+  let outputContainer = document.createElement('p');
   outputContainer.setAttribute('class', 'output');
   outputContainer.innerHTML = message;
   output.appendChild(outputContainer);
