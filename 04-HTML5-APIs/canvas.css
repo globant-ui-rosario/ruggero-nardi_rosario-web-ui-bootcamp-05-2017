@@ -3,4 +3,5 @@
   width: fit-content;
   display: block;
   margin: auto;
+  position: relative;
 }
