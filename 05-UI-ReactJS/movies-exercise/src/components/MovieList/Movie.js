@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './movie.css'
 
 class Movie extends Component {
   constructor() {
@@ -8,14 +9,12 @@ class Movie extends Component {
     };
   }
   editMovieData() {
-    console.log('in editMovie');
     this.setState({ editMode: true });
   }
 
 
   deleteMovie() {
-    console.log('in deleteMovie' + this.props.index);
-    this.props.deleteMovie(this.props.index);
+      this.props.deleteMovie(this.props.index);
   }
 
   saveEdit() {
@@ -25,34 +24,42 @@ class Movie extends Component {
     this.props.editMovie(title, genre, year, this.props.index);
     this.setState({ editMode: false });
   }
+  addToFavourite() {
+    this.props.addToFavouriteList(this.props.index);
+  }
 
 
   render() {
 
     if (this.state.editMode) {
       return (
-        <div className="movie-container">
-          Title:<input ref="titleInput" defaultValue={this.props.title}></input>
-          Genre:
-          <select ref="genreInput" defaultValue={this.props.genre}>
-            <option value="Action">Action</option>
-            <option value="Romance">Romance</option>
-            <option value="Thriller">Thriller</option>
-            <option value="Fantasy">Fantasy</option>
-            <option value="Documentary">Documentary</option>
-          </select>
-          Year:<input ref="yearInput" defaultValue={this.props.year}></input>
-          <button className="button-add" type="input" onClick={this.saveEdit.bind(this)}>SAVE</button>
+        <div className="movie-edit-container">
+          <div className="movie">
+            <input placeholder="Title..." className="input" ref="titleInput" defaultValue={this.props.title} ></input>
+            <select className="input" ref="genreInput" defaultValue={this.props.genre}>
+              <option label="Select Genre" hidden></option>
+              <option value="Action">Action</option>
+              <option value="Romance">Romance</option>
+              <option value="Thriller">Thriller</option>
+              <option value="Fantasy">Fantasy</option>
+              <option value="Documentary">Documentary</option>
+            </select>
+            <input placeholder="Year..." className="input" ref="yearInput" defaultValue={this.props.year}></input>
+          </div>
+          <button className="button-edit" type="input" onClick={this.saveEdit.bind(this)}>SAVE</button>
         </div>
       );
     } else {
       return (
         <div className="movie-container">
-          <span>{this.props.title} - </span>
-          <span>{this.props.genre} - </span>
-          <span>{this.props.year}.</span>
-          <button className="button-edit" onClick={this.editMovieData.bind(this)}>EDIT</button>
+          <div className="movie">
+            <span>"{this.props.title}" - </span>
+            <span>{this.props.genre} - </span>
+            <span>{this.props.year}</span>
+          </div>
           <button className="button-delete" onClick={this.deleteMovie.bind(this)}>DELETE</button>
+          <button className="button-edit" onClick={this.editMovieData.bind(this)}>EDIT</button>
+          <button className="button-edit" onClick={this.addToFavourite.bind(this)}>FAV</button>
         </div>
       );
     }
