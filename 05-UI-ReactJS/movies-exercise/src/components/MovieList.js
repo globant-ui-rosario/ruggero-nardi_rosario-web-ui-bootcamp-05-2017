@@ -41,6 +41,11 @@ class MovieList extends Component {
     movieList[index].favourite = true;
     this.setState({movieList: movieList});
   }
+  removeFromFavouriteList(index){
+    let movieList = this.state.movieList;
+    movieList[index].favourite = false;
+    this.setState({movieList: movieList});
+  }
 
   prepareMovieTag(movie, index) {
     return (<Movie className="movie" key={index} index={index} title={movie.title} genre={movie.genre} year={movie.year} deleteMovie={this.deleteMovie.bind(this)} editMovie={this.editMovie.bind(this)} addToFavouriteList={this.addToFavouriteList.bind(this)} />);
@@ -50,7 +55,7 @@ class MovieList extends Component {
     return (
       <div key={index} className="favourite-list-item">
         {movie.title}
-        <button className="button-remove">X</button>
+        <button className="button-remove" onClick={ ()=>{this.removeFromFavouriteList(index)}}>X</button>
       </div>
     );
     }
