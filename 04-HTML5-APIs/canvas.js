@@ -1,11 +1,5 @@
 const drawArea = document.getElementById('drawing-area');
-const frame = window.requestAnimationFrame;
-let rectangle = {
-  x: 50,
-  y: 50,
-  width: 200,
-  height: 200,
-};
+
 function draw() {
   drawArea.width = 600;
   drawArea.height = 600;
@@ -31,10 +25,10 @@ function drawSquare() {
   square.lineWidth = 5;
   square.strokeStyle = randomColor();
   square.fillStyle = randomColor();
-  square.rect(rectangle.x, rectangle.y, rectangle.width, rectangle.height);
+  square.rect(50, 50, 200, 200);
   square.fill();
-  square.stroke()
-};
+  square.stroke();
+}
 function drawTriangle() {
   const triangle = drawArea.getContext('2d');
   triangle.beginPath();
