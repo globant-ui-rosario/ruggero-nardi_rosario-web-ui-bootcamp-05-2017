@@ -5,6 +5,12 @@
   float:left ;
   background-color: lightgrey;
 }
+.button-add-container {
+  width: 100%;
+  background-color: #b9c6ad;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
 .button-add {
   margin: 20px auto 10px;
 	-moz-box-shadow:inset 0px 1px 3px 0px #91b8b3;
@@ -48,11 +54,11 @@
 }
 .favourite-container {
   display: block;
-  float: left;
+  float: right;
   margin: 10px auto 0;
   width: 30%;
   min-height: 300px;
-  background-color: #81E6BA;
+  background-color: #507f53;
   color: #000000;
   font-family: verdana;
   font-weight: bold;
@@ -68,7 +74,7 @@
 }
 .favourite-movie {
   margin: auto;
-  width: 90%;
+  width: 100%;
 }
 .button-remove {
   float: right;
@@ -93,4 +99,8 @@
 .favourite-list-item {
 	clear:both;
 	font-size: 20px;
+  width: 100%;
+  margin: 5px 0 5px 0;
+  background-color: rgba(168, 219, 172, 0.5);
+  border-radius: 3px;
 }

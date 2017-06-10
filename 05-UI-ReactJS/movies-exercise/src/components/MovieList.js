@@ -36,36 +36,38 @@ class MovieList extends Component {
     };
     this.setState({ movieList: movieList });
   }
-  addToFavouriteList(index){
+  addToFavouriteList(index) {
     let movieList = this.state.movieList;
     movieList[index].favourite = true;
-    this.setState({movieList: movieList});
+    this.setState({ movieList: movieList });
   }
-  removeFromFavouriteList(index){
+  removeFromFavouriteList(index) {
     let movieList = this.state.movieList;
     movieList[index].favourite = false;
-    this.setState({movieList: movieList});
+    this.setState({ movieList: movieList });
   }
 
   prepareMovieTag(movie, index) {
     return (<Movie className="movie" key={index} index={index} title={movie.title} genre={movie.genre} year={movie.year} deleteMovie={this.deleteMovie.bind(this)} editMovie={this.editMovie.bind(this)} addToFavouriteList={this.addToFavouriteList.bind(this)} />);
   }
   prepareFavouriteMovieTag(movie, index) {
-    if(movie.favourite) {
-    return (
-      <div key={index} className="favourite-list-item">
-        {movie.title}
-        <button className="button-remove" onClick={ ()=>{this.removeFromFavouriteList(index)}}>X</button>
-      </div>
-    );
+    if (movie.favourite) {
+      return (
+        <div key={index} className="favourite-list-item">
+          {movie.title}
+          <button className="button-remove" onClick={() => { this.removeFromFavouriteList(index) }}>X</button>
+        </div>
+      );
     }
   }
 
   render() {
     return (
       <div>
-        <div className="list-container">
+        <div className="button-add-container">
           <button className="button-add button" onClick={this.addNewMovie.bind(this)}>ADD NEW MOVIE</button>
+        </div>
+        <div className="list-container">
           {this.state.movieList.map(this.prepareMovieTag.bind(this))}
         </div>
         <div className="favourite-container">
