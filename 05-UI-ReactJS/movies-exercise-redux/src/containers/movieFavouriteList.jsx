@@ -14,9 +14,9 @@ class FavouriteMoviesList extends Component {
         let listItem = null;
         if (movie.favourite) {
           listItem = (
-            <li key={movie.id}>
-              <span>{movie.title}</span>
-              <button onClick={() => this.removeFromFavouritesList(movie.id)}>Remove From Favourites</button>
+            <li className="favourite-list-item" key={movie.id}>
+              <span className="favourite-list-item-title">{movie.title}</span>
+              <button className="favourite-list-item-button" onClick={() => this.removeFromFavouritesList(movie.id)}>Remove From Favourites</button>
             </li>
           );
         }
@@ -27,8 +27,9 @@ class FavouriteMoviesList extends Component {
 
   render() {
     return (
-      <div>
-        <ul>
+      <div className="favourite-list-container">
+        <h3 className="favourite-list-title">Favourite Movies</h3>
+        <ul className="favourite-list">
           {this.createFavouriteList()}
         </ul>
       </div>

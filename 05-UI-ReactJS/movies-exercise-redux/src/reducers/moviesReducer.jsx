@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 const initialMovies = [{
   id: Math.random(),
   title: 'Terminator',
@@ -18,22 +20,29 @@ const initialMovies = [{
 }];
 
 export const moviesReducer = (state = initialMovies, action) => {
+  let newState = _.cloneDeep(state);
   switch (action.type) {
     case 'ADD_MOVIE':
-      state = [...state, action.movie];
+      newState = [...newState, action.movie];
       break;
     case 'DELETE_MOVIE':
-      const movies = state.filter(movie => movie.id !== action.id);
-      state = movies;
+      newState = newState.filter(movie => movie.id !== action.id);
       break;
     case 'ADD_TO_FAVOURITES':
-      state[state.findIndex(movie => movie.id === action.id)].favourite = true;      
+      newState[newState.findIndex(movie => movie.id === action.id)].favourite = true;
       break;
     case 'REMOVE_FROM_FAVOURITES':
-      state[state.findIndex(movie => movie.id === action.id)].favourite = false; 
+      newState[newState.findIndex(movie => movie.id === action.id)].favourite = false;
       break;
+    case 'EDIT_MOVIE':
+      const index = newState.findIndex(movie => movie.id === action.movie.id);
+      newState[index].title = action.movie.title;
+      newState[index].genre = action.movie.genre;
+      newState[index].year = action.movie.year;
+      newState[index].plot = action.movie.plot;
+      break
     default:
       break;
   }
-  return state;
+  return newState;
 }

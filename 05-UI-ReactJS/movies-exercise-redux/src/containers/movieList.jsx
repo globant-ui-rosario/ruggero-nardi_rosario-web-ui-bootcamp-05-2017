@@ -33,12 +33,12 @@ class MovieList extends Component {
     if (this.props.movies) {
       return this.props.movies.map((movie) => {
         return (
-          <li key={movie.id}>
-            <div onClick={() => this.props.selectMovie(movie)}>
+          <li key={movie.id} className="list-item-container">
+            <div className="list-text" onClick={() => this.props.selectMovie(movie)}>
               {movie.title}
             </div>
-            <button onClick={() => this.deleteMovie(movie.id)}>X</button>
-            <button onClick={() => this.addToFavouriteList(movie.id)}>ADD TO FAVOURITE</button>
+            <button className="list-button-delete" onClick={() => this.deleteMovie(movie.id)}>X</button>
+            <button className="list-button-add" onClick={() => this.addToFavouriteList(movie.id)}>ADD TO FAVOURITE</button>
           </li>
         );
       });
@@ -48,8 +48,8 @@ class MovieList extends Component {
   render() {
     return (
       <div className="movie-list">
-        <button onClick={() => this.addMovieToList()}>Add Movie</button>
-        <ul>
+        <button className="button-new" onClick={() => this.addMovieToList()}>Add Movie</button>
+        <ul className="list-container">
           {this.createMovieList()}
         </ul>
       </div>
