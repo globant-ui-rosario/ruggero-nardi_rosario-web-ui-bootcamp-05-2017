@@ -14,12 +14,12 @@ class App extends Component {
       <Router>
         <div>
           <NavigationBar />
-          <Route exact path='/' component={RegionPick} />
-          <Route path='/home' component={Home} />
-          <Route path='/RegionPick' component={RegionPick} />
-          <Route path='/PlayerSearch' component={PlayerSearch} />
-          <Route path='/GuildSearch' component={GuildSearch} />
-          <Route path='/Leaderboards' component={Leaderboards} />
+          <Route exact path={'/'} component={RegionPick} />
+          <Route path={'/Require'} component={RegionPick}/>
+          <Route path={'/Home'} component={Home} />
+          <Route path={'/PlayerSearch'} component={PlayerSearch} />
+          <Route path={'/GuildSearch'} component={GuildSearch} />
+          <Route path={'/Leaderboards'} component={Leaderboards} />
         </div>
       </Router>
     );

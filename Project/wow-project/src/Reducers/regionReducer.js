@@ -1,15 +1,17 @@
+import _ from 'lodash';
 
-export const regionReducer = (state, action) => {
+export const regionReducer = (state = null, action) => {
   let newState = null;
+  if (state) { newState = _.cloneDeep(state); }
   switch (action.type) {
     case 'REGION_SELECTED':
-      newState = action.region;
+      newState = { name: action.region.name, url: action.region.url };
       break;
     case 'SET_REALMS':
-      console.log('in set realms');
+      newState = {...newState, realms: action.realms };
       break;
     default:
       break;
-  }
+  };
   return newState;
 };
