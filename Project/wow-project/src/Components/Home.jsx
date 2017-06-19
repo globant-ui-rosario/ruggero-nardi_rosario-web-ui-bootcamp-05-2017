@@ -6,11 +6,18 @@ import { Link } from 'react-router-dom';
 
 class Home extends Component {
 
-  regionName() {
+  regionPickControl() {
     if (this.props.region) {
-      return ("Realms Status for " + this.props.region.name + " Region.");
+      if (this.props.match.url === '/RealmRequired') {
+        return (<h2>Please Select a Realm to access search and leaderboards</h2>);
+      } else if (this.props.realm) {
+        return (
+          <Redirect to={'/Realm/'+this.props.realm.name} />
+        );
+      }
+      return (<h2>"Realms Status for {this.props.region.name} Region."</h2>);
     } else {
-      return <Redirect to='/Require'/>;
+      return <Redirect to='/Required' />;
     }
 
   }
@@ -18,7 +25,7 @@ class Home extends Component {
   render() {
     return (
       <div className="container">
-        <h2 className="text-center">{this.regionName()}</h2>
+        {this.regionPickControl()}
         <Link to={'/'}>{'CHANGE REGION'}</Link>
         <div>
           <RealmStatus />
@@ -29,7 +36,8 @@ class Home extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  region: state.region
+  region: state.region,
+  realm: state.realm
 });
 
 export default connect(mapStateToProps)(Home);

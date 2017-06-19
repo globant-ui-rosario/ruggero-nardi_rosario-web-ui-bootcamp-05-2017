@@ -19,7 +19,14 @@ class NavigationBar extends Component {
               <li><NavLink to='/Home'>HOME</NavLink></li>
               <li><NavLink to="/PlayerSearch">PLAYER SEARCH</NavLink></li>
               <li><NavLink to="/GuildSearch">GUILD SEARCH</NavLink></li>
-              <li><NavLink to="/Leaderboards">LEEADERBOARDS</NavLink></li>
+              <li className="dropdown">
+                <a className="dropdown-toggle nav-button" data-toggle="dropdown" >LEADERBOARDS
+        <span className="caret"></span></a>
+                <ul className="dropdown-menu">
+                  <li><NavLink to={'/Leaderboard/Challenge'}>CHALLENGE</NavLink></li>
+                  <li><NavLink to={'/Leaderboards'}>PvP</NavLink></li>
+                </ul>
+              </li>
             </ul>
           </div>
         </div>

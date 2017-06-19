@@ -16,8 +16,8 @@ class RegionPick extends Component {
 
   
   checkRequire() {
-    if (this.props.location.pathname === '/Require') {
-      return (<p>Please Pick a Region</p>)
+    if (this.props.location.pathname === '/Required') {
+      return (<p>Please Pick a Region to continue</p>)
     }
   }
   
