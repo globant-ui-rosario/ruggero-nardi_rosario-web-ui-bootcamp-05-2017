@@ -41,7 +41,6 @@ class ChallengeLeaderboardMaps extends Component {
     } else {
       render = (
         <div>
-          <input type="text" />
           <ul>
             {this.listChallengeMaps()}
           </ul>
@@ -54,9 +53,13 @@ class ChallengeLeaderboardMaps extends Component {
   listChallengeMaps() {
     return this.props.challenge.map(challenge => {
       return (
-        <li onClick={() => this.props.setChallenge(challenge)} key={this.props.challenge.indexOf(challenge)}> <NavLink to={`${this.props.match.url}/` + challenge.map.slug}>{challenge.map.name}</NavLink></li>
+        <li key={this.props.challenge.indexOf(challenge)} onClick={() => this.setSelectedChallenge(challenge)}> <NavLink to={`${this.props.match.url}/` + challenge.map.slug}>{challenge.map.name}</NavLink></li>
       );
     });
+  }
+
+  setSelectedChallenge(challenge) {
+    this.props.setChallenge(challenge);
   }
 
   requireCheck() {

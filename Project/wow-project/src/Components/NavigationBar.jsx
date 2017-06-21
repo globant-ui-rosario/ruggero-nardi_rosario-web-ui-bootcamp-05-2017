@@ -17,7 +17,7 @@ class NavigationBar extends Component {
           <div className="collapse navbar-collapse" id="myNavbar">
             <ul className="nav navbar-nav">
               <li><NavLink to='/Home'>HOME</NavLink></li>
-              <li><NavLink to="/PlayerSearch">PLAYER SEARCH</NavLink></li>
+              <li><NavLink to="/CharacterSearch">PLAYER SEARCH</NavLink></li>
               <li><NavLink to="/GuildSearch">GUILD SEARCH</NavLink></li>
               <li className="dropdown">
                 <a className="dropdown-toggle nav-button" data-toggle="dropdown" >LEADERBOARDS

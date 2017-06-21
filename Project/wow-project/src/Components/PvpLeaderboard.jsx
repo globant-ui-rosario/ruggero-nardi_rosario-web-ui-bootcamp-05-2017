@@ -37,11 +37,15 @@ class PvpLeaderboard extends Component {
 
   retryFetch() {
     this.props.setPvpLeaderboard(null);
+    this.fetchLeaderboardData();
   }
 
   listTop10() {
     return this.props.leaderboard.pvpList.map(player => {
-      return (<li key={player.ranking}>{player.ranking} - {player.name} - {player.realmName}</li>)
+      return (
+        <li key={Math.random()}>
+          {player.ranking} -<NavLink to={'/CharacterSearch/' + player.name}>{player.name}</NavLink>- {player.realmName}
+        </li>)
     });
   }
 

@@ -24,21 +24,21 @@ class RegionPick extends Component {
 
   render() {
     return (
-      <div>
+      <div className="container">
         <div>
           {this.checkRequire()}
         </div>
         <NavLink onClick={() => this.setRegion('us', 'Americas')} to={"/Home"}>
-          <button className="col-xs-6 text-center btn-lg">Americas</button>
+          <button className="button col-xs-12 col-md-6 text-center btn-lg btn">Americas</button>
         </NavLink>
         <NavLink onClick={() => this.setRegion('eu', 'Europe')} to={"/Home"}>
-          <button className="col-xs-6 text-center btn-lg">Europe</button>
+          <button className="button col-xs-12 col-md-6 text-center btn-lg btn">Europe</button>
         </NavLink>
         <NavLink onClick={() => this.setRegion('tw', 'Taiwan')} to={"/Home"}>
-          <button className="col-xs-6 text-center btn-lg">Taiwan</button>
+          <button className="button col-xs-12 col-md-6 text-center btn-lg btn">Taiwan</button>
         </NavLink>
         <NavLink onClick={() => this.setRegion('kr', 'Korea')} to={"/Home"}>
-          <button className="col-xs-6 text-center btn-lg">Korea</button>
+          <button className="button col-xs-12 col-md-6 text-center btn-lg btn">Korea</button>
         </NavLink>
       </div>
     );

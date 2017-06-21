@@ -7,9 +7,6 @@ export const challengeLeaderboardReducer = (state = null, action) => {
     case 'SET_CHALLENGE_LEADERBOARD':
       newState = action.challengeLeaderboard;
       break;
-    case 'SET_CHALLENGE':
-      console.log(action);
-      break
     default:
       break;
   }

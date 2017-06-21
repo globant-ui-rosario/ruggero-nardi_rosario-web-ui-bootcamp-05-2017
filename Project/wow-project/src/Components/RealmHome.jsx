@@ -10,7 +10,7 @@ class RealmHome extends Component {
     let newRender;
     if (this.props.region) {
       if (this.props.realm) {
-        newRender = (<p>Welcome to {this.props.realm.name}</p>);
+        newRender = (<h2>Welcome to {this.props.realm.name}</h2>);
       } else {
         newRender = <Redirect to='/realmRequired' />
       }
@@ -26,8 +26,14 @@ class RealmHome extends Component {
         {this.requireCheck()}
         <div>
           <NavLink to='/Home' onClick={() => this.props.setRealm(null)}>
-          Check Other Realm
+            Check Other Realm
           </NavLink>
+          <div>
+            <NavLink to={'/CharacterSearch'}>Search Character in {this.props.realm.name}</NavLink>
+          </div>
+          <div>
+            <NavLink to={'/GuildSearch'}>Search Guild in {this.props.realm.name}</NavLink>
+          </div>
         </div>
       </div>
     );

@@ -7,3 +7,39 @@ li {
   cursor: pointer;
   cursor: hand;
 }
+.button {
+  background-color: #041451;
+  border: 1px solid lightgreen;
+  transition: all 0.1s ease-in-out;
+}
+.character-tittle {
+  font-weight: bold;
+  color: black;
+  text-shadow: 0 0 10px white;
+}
+.guild-tittle {
+  font-weight: bold;
+  color: black;
+  text-shadow: 0 0 10px white;
+}
+.button:hover {
+  background-color: #153b77;
+  color: #397fef;
+  font-size: 1.5em;
+}
+.basic-info-list {
+ list-style: none;
+}
+.basic-info-item {
+  font-size: 1.2em;
+  color: lightcyan;
+  text-shadow: 0 0 8px black;
+}
+.stats-info-list {
+ list-style: none;
+}
+.stats-info-item {
+  color: lightgray;
+  text-shadow: 0 0 4px black;
+}
+

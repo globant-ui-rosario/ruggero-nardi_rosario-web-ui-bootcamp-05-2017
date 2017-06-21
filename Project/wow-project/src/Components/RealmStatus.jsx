@@ -5,7 +5,12 @@ import { setRealms } from '../Actions/setRealms';
 import { setRealm } from '../Actions/setRealm';
 
 class RealmStatus extends Component {
-
+  constructor() {
+    super();
+    this.state = {
+      search: ''
+    }
+  }
 
   componentDidMount() {
     this.fetchRealmsData();
@@ -27,26 +32,36 @@ class RealmStatus extends Component {
   listRealms() {
     if (this.props.region.realms === 'ERROR') {
       return (
-        <div>
-          <p>Unexpeted Error!</p>
-          <button onClick={() => this.fetchRealmsData()}>RETRY</button>
-        </div>
+        <tr>
+          <td>Unexpected Error!</td>
+          <td colSpan="3"><button onClick={() => this.fetchRealmsData()}>RETRY</button></td>
+        </tr>
       );
     } else {
       return this.props.region.realms.map(realm => {
-        let status;
-        if (realm.status) {
-          status = 'ONLINE';
-        } else {
-          status = 'OFFLINE';
+        if (realm.name.toLowerCase().startsWith(this.state.search.toLowerCase())) {
+          let status;
+          let colorClass;
+          if (realm.status) {
+            status = 'ONLINE';
+            colorClass = 'green'
+          } else {
+            status = 'OFFLINE';
+            colorClass = 'red';
+          }
+          return (
+            <tr key={realm.name}>
+              <td>{status}</td>
+              <td>
+                <NavLink to={'/Realm/' + realm.name} onClick={() => this.props.setRealm(realm)} >
+                  {realm.name}
+                </NavLink>
+              </td>
+              <td>{realm.type}</td>
+              <td>{realm.population}</td>
+            </tr>
+          );
         }
-        return (
-          <li key={realm.name}  >
-            <NavLink to={'/Realm/' + realm.name} onClick={() => this.props.setRealm(realm)} >
-              {status} - {realm.name} - {realm.type} - {realm.population} - {realm.locale}
-            </NavLink>
-          </li>
-        );
       });
     }
   }
@@ -58,10 +73,23 @@ class RealmStatus extends Component {
     if (this.props.region) {
       if (this.props.region.realms) {
         newRender = (
-          <div>
-            <ul>
-              {this.listRealms()}
-            </ul>
+          <div className='container'>
+            <input placeholder="Search Realm..." type="text" onChange={(event) => this.setState({ search: event.target.value })} />
+            <div className="table-responsive">
+              <table className='table table-striped table-bordered'>
+                <thead>
+                  <tr>
+                    <th>STATUS</th>
+                    <th>REALM</th>
+                    <th>TYPE</th>
+                    <th>POPULATION</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {this.listRealms()}
+                </tbody>
+              </table>
+            </div>
           </div>
         );
       } else {
