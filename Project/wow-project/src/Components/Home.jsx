@@ -2,34 +2,36 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import RealmStatus from './RealmStatus';
-import { Link } from 'react-router-dom';
 
 class Home extends Component {
 
   regionPickControl() {
+    let validationControl;
     if (this.props.region) {
       if (this.props.match.url === '/RealmRequired') {
-        return (<h2>Please Select a Realm to access search and leaderboards</h2>);
+        validationControl = (<h2 className="text-center tittle-region">Please Select a Realm to Continue</h2>);
       } else if (this.props.realm) {
-        return (
-          <Redirect to={'/Realm/'+this.props.realm.name} />
+        validationControl = (
+          <Redirect to={'/Realm/' + this.props.realm.name} />
         );
       }
-      return (<h2>"Realms Status for {this.props.region.name} Region."</h2>);
+      validationControl = (<h2 className="text-center tittle-region">Realms Status for {this.props.region.name} Region</h2>);
     } else {
-      return <Redirect to='/Required' />;
+      validationControl = <Redirect to='/Required' />;
     }
-
+    return validationControl;
   }
 
   render() {
     return (
-      <div className="container">
+      <div className="container text-center">
         {this.regionPickControl()}
-        <Link to={'/'}>{'CHANGE REGION'}</Link>
-        <div>
-          <RealmStatus />
-        </div>
+        <button className="btn btn-warning region-button" onClick={() => this.props.history.push('/')}>
+        
+        CHANGE REGION
+        
+        </button>
+        <RealmStatus />
       </div>
     );
   }

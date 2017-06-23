@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Route, NavLink, Redirect } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { setPvpLeaderboard } from '../Actions/setPvpLeaderboard';
 
 class PvpLeaderboard extends Component {
@@ -43,9 +43,12 @@ class PvpLeaderboard extends Component {
   listTop10() {
     return this.props.leaderboard.pvpList.map(player => {
       return (
-        <li key={Math.random()}>
-          {player.ranking} -<NavLink to={'/CharacterSearch/' + player.name}>{player.name}</NavLink>- {player.realmName}
-        </li>)
+        <tr key={player.ranking}>
+          <td>{player.ranking}</td>
+          <td>{player.name}</td>
+          <td>{player.realmName}</td>
+        </tr>
+      );
     });
   }
 
@@ -54,21 +57,36 @@ class PvpLeaderboard extends Component {
     if (this.props.leaderboard) {
       if (this.props.leaderboard.pvpList === 'ERROR') {
         newRender = (
-          <div>
-            <p>Unexpected ERROR!</p>
+          <div className="container text-center">
+            <p className="loading">Unexpected ERROR!</p>
             <button onClick={() => { this.retryFetch() }}>RETRY</button>
           </div>
         );
       } else if (this.props.leaderboard.pvpList) {
         newRender = (
-          <div>
-            <p>This is a {this.props.match.params.leaderboardId} Leaderboard</p>
-            {this.listTop10()}
+          <div className="container text-center">
+            <p className="tittle-region">{this.props.match.params.leaderboardId} Leaderboard</p>
+            <div className="table-responsive text-center">
+              <table className="realm-table table table-hover table-bordered">
+                <thead className="search-table table-head">
+                  <tr>
+                    <th>Ranking</th>
+                    <th>Member</th>
+                    <th>Realm</th>
+                  </tr>
+                </thead>
+                <tbody className="table-body">
+                  {this.listTop10()}
+                </tbody>
+              </table>
+            </div>
           </div>
         );
       } else {
         newRender = (
-          <p>LOADING LEADERBOARD</p>
+          <div className="container text-center">
+            <p className="loading">LOADING LEADERBOARD...</p>
+          </div>
         );
       }
     }
@@ -84,4 +102,4 @@ const mapStateToProps = (state, ownProps) => ({
   leaderboard: state.leaderboard
 });
 
-export default connect(mapStateToProps, { setPvpLeaderboard })(PvpLeaderboard);
+export default withRouter(connect(mapStateToProps, { setPvpLeaderboard })(PvpLeaderboard));

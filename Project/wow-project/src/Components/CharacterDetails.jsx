@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { NavLink } from 'react-router-dom';
 
 
 class characterDetails extends Component {
@@ -36,7 +35,6 @@ class characterDetails extends Component {
   }
 
   replaceNumbersForProperStrings(data) {
-    console.log('data in replace', data);
     const stringFactionData = {
       0: 'Alliance',
       1: 'Horde',
@@ -100,72 +98,95 @@ class characterDetails extends Component {
     }
   }
 
+  displayProperQualityName(quality) {
+    const stringQualityData = {
+      0: 'Poor',
+      1: 'Common',
+      2: 'Uncommon',
+      3: 'Rare',
+      4: 'Epic',
+      5: 'Legendary',
+      6: 'Artifact',
+      7: 'Heirloom',
+      8: 'WoW-Token'
+    }
+    return stringQualityData[quality];
+  }
+
   setTable() {
-    const slots = ['Back', 'Chest', 'Feet', 'Finger1', 'Finger2', 'Hands', 'Head', 'Legs', 'Main Hand', 'Neck', 'Off Hand', 'Shoulder', 'Trinket1', 'Trinket2', 'Waist', 'Wrist'];
+    const slots = ['mainHand', 'offHand', 'back', 'chest', 'feet', 'finger1', 'finger2', 'hands', 'head', 'legs', 'neck', 'shoulder', 'trinket1', 'trinket2', 'waist', 'wrist'];
     return slots.map((slot) => {
-      if (this.state.character.items[slot.toLowerCase()]) {
-        const src = 'http://media.blizzard.com/wow/icons/36/' + this.state.character.items[slot.toLowerCase()].icon + '.jpg';
-        return (
-          <tr key={this.state.character.items[slot.toLowerCase()].id}>
+      let newTable;
+      if (this.state.character.items[slot]) {
+        const src = 'http://media.blizzard.com/wow/icons/36/' + this.state.character.items[slot].icon + '.jpg';
+        const quality = this.displayProperQualityName(this.state.character.items[slot].quality);
+        newTable = (
+          <tr className="search-table" key={this.state.character.items[slot].id}>
             <td>{slot}</td>
-            <td><img src={src} alt='Item icon' /></td>
-            <td>{this.state.character.items[slot.toLowerCase()].name}</td>
-            <td>{this.state.character.items[slot.toLowerCase()].itemLevel}</td>
-            <td>{this.state.character.items[slot.toLowerCase()].quality}</td>
+            <td><img className="item-icon" src={src} alt='Item icon' /></td>
+            <td>{this.state.character.items[slot].name}</td>
+            <td>{this.state.character.items[slot].itemLevel}</td>
+            <td className={quality.toLowerCase()}>{quality}</td>
           </tr>
         )
-      }
+      } else newTable = null;
+      return newTable;
     });
   }
 
   guildCheck() {
+    let guildCheck;
     if (this.state.character.guild) {
-      return this.state.character.guild.name
+      guildCheck = this.state.character.guild.name
     } else {
-      return 'NO GUILD'
+      guildCheck = 'NO GUILD'
     }
+    return guildCheck;
   }
 
   render() {
+    let newRender;
     if (this.state.character === 'ERROR') {
-      return (
-        <div>
-          <h2>Error: Character Not Found</h2>
+      newRender = (
+        <div className="text-center">
+          <h2 className="loading">Error: Character Not Found</h2>
           <button onClick={() => { this.fetchCharacterData() }}>Retry?</button>
         </div>
       );
     } else if (this.state.character) {
-      return (
+      newRender = (
         <div className="container">
-          <div style={this.setBackgroundImage()}>
-            <div>
-              <h2 className="text-center character-tittle">"{this.state.character.name}" (Level {this.state.character.level}) - {this.state.character.faction}</h2>
-              <h3 className="text-center guild-tittle">Guild: {this.guildCheck()}</h3>
+          <div className="second-image">
+            <div style={this.setBackgroundImage()} className="player-details">
+              <div>
+                <h2 className="text-center character-tittle">"{this.state.character.name}" (Level {this.state.character.level}) - {this.state.character.faction}</h2>
+                <h3 className="text-center guild-tittle">Guild: {this.guildCheck()}</h3>
+              </div>
+              <ul className="basic-info-list">
+                <li className="basic-info-item">Race: {this.state.character.race}</li>
+                <li className="basic-info-item">Class: {this.state.character.class}</li>
+                <li className="basic-info-item">Gender: {this.state.character.gender}</li>
+                <li className="basic-info-item">Battlegroup: {this.state.character.battlegroup}</li>
+                <li className="basic-info-item">Achievement Points: {this.state.character.achievementPoints}</li>
+              </ul>
+              <ul className="stats-info-list">
+                <li className="stats-info-item">Health: {this.state.character.stats.health} HP</li>
+                <li className="stats-info-item">Power Type: {this.state.character.stats.powerType}</li>
+                <li className="stats-info-item">Power: {this.state.character.stats.power}</li>
+                <li className="stats-info-item">Strength: {this.state.character.stats.str}</li>
+                <li className="stats-info-item">Agility: {this.state.character.stats.agi}</li>
+                <li className="stats-info-item">Inteligence: {this.state.character.stats.int}</li>
+                <li className="stats-info-item">Stamina: {this.state.character.stats.sta}</li>
+              </ul>
             </div>
-            <ul className="basic-info-list">
-              <li className="basic-info-item">Race: {this.state.character.race}</li>
-              <li className="basic-info-item">Class: {this.state.character.class}</li>
-              <li className="basic-info-item">Gender: {this.state.character.gender}</li>
-              <li className="basic-info-item">Battlegroup: {this.state.character.battlegroup}</li>
-              <li className="basic-info-item">Achievement Points: {this.state.character.achievementPoints}</li>
-            </ul>
-            <ul className="stats-info-list">
-              <li className="stats-info-item">Health: {this.state.character.stats.health} HP</li>
-              <li className="stats-info-item">Power Type: {this.state.character.stats.powerType}</li>
-              <li className="stats-info-item">Power: {this.state.character.stats.power}</li>
-              <li className="stats-info-item">Strength: {this.state.character.stats.str}</li>
-              <li className="stats-info-item">Agility: {this.state.character.stats.agi}</li>
-              <li className="stats-info-item">Inteligence: {this.state.character.stats.int}</li>
-              <li className="stats-info-item">Stamina: {this.state.character.stats.sta}</li>
-            </ul>
           </div>
           <div>
-            <h2 className="text-center">Equipped Items</h2>
-            <h3 className="text-center">Avarage Item lvl: {this.state.character.items.averageItemLevel}</h3>
-            <h3 className="text-center">Avarage Equipped Item lvl: {this.state.character.items.averageItemLevelEquipped}</h3>
-            <div className="table-responsive">
-              <table className='table table-striped table-bordered text-center'>
-                <thead>
+            <h2 className="tittle-character-detail text-center">Equipped Items</h2>
+            <h3 className="tittle-average-item text-center">Avarage Item lvl: {this.state.character.items.averageItemLevel}</h3>
+            <h3 className="tittle-average-item text-center">Avarage Equipped Item lvl: {this.state.character.items.averageItemLevelEquipped}</h3>
+            <div className="table-responsive text-center">
+              <table className="realm-table table table-hover table-bordered">
+                <thead className="search-table table-head">
                   <tr>
                     <th>Slot</th>
                     <th>Icon</th>
@@ -174,7 +195,7 @@ class characterDetails extends Component {
                     <th>Quality</th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody className="table-body">
                   {this.setTable()}
                 </tbody>
               </table>
@@ -183,8 +204,13 @@ class characterDetails extends Component {
         </div>
       );
     } else {
-      return <p>LOADING</p>
+      newRender = (
+        <div className="text-center">
+          <h2 className="loading">Searching Character...</h2>
+        </div>
+      )
     }
+    return newRender;
   }
 }
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { NavLink, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { showLeaderboard } from '../Actions/showLeaderboard';
 
 class PvpLeaderboardsNav extends Component {
@@ -8,24 +8,39 @@ class PvpLeaderboardsNav extends Component {
   requireCheck() {
     let newRender;
     if (this.props.region) {
-        newRender = (<p>PvP Leaderboards</p>)
+      newRender = (<h2 className="text-center tittle-region">PvP Leaderboards</h2>)
     } else {
       newRender = <Redirect to='/Required' />
     }
     return newRender;
   }
 
+  setSelectedLeaderboard(leaderboard) {
+    this.props.showLeaderboard(leaderboard);
+    if (leaderboard === 'rbg') {
+      this.props.history.push(`${this.props.match.url}/Battlegrounds`);
+    } else {
+      this.props.history.push(`${this.props.match.url}/` + leaderboard);
+    }
+  }
+
   render() {
     return (
-      <div>
+      <div className="container">
         {this.requireCheck()}
-        <nav>
-          <ul>
-            <li><NavLink to={`${this.props.match.url}/2v2`} onClick={() => this.props.showLeaderboard('2v2')}>PvP 2v2</NavLink></li>
-            <li><NavLink to={`${this.props.match.url}/3v3`} onClick={() => this.props.showLeaderboard('3v3')}>PvP 3v3</NavLink></li>
-            <li><NavLink to={`${this.props.match.url}/rbg`} onClick={() => this.props.showLeaderboard('Battlegrounds')}>PvP Battlegrounds</NavLink></li>
-          </ul>
-        </nav>
+        <div className="container text-center">
+          <div className="row">
+            <div className="col-xs-12 col-md-4">
+              <button className="button-2v2" onClick={() => this.setSelectedLeaderboard('2v2')}></button>
+            </div>
+            <div className="col-xs-12 col-md-4">
+              <button className="button-3v3" onClick={() => this.setSelectedLeaderboard('3v3')}></button>
+            </div>
+            <div className="col-xs-12 col-md-4">
+              <button className="button-rbg" onClick={() => this.setSelectedLeaderboard('rbg')}></button>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

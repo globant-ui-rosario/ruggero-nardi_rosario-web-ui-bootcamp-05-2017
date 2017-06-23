@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { setRegion } from '../Actions/setRegion';
-import { NavLink } from 'react-router-dom';
 
 
 class RegionPick extends Component {
@@ -12,34 +11,44 @@ class RegionPick extends Component {
       url: url
     }
     this.props.setRegion(region);
+    this.props.history.push('/Home');
   }
 
-  
+
   checkRequire() {
     if (this.props.location.pathname === '/Required') {
-      return (<p>Please Pick a Region to continue</p>)
+      return (
+        <p className="tittle-region">Please Pick a Region to continue</p>
+      );
     }
   }
-  
 
   render() {
     return (
-      <div className="container">
-        <div>
-          {this.checkRequire()}
+      <div>
+        {this.checkRequire()}
+        <div className="fill col-sm-0 col-md-12"></div>
+        <div className="container text-center">
+          <div className="row">
+            <div className="col-sm-12 col-md-4">
+              <button onClick={() => this.setRegion('us', 'Americas')} className="button text-center">Americas</button>
+            </div>
+            <div className="fill col-sm-12 col-md-4"></div>
+            <div className="col-sm-12 col-md-4">
+              <button onClick={() => this.setRegion('eu', 'Europe')} className="button text-center">Europe</button>
+            </div>
+          </div>
+          <div className="fill col-sm-12 col-md-0"></div>
+          <div className="row">
+            <div className="col-sm-12 col-md-4">
+              <button onClick={() => this.setRegion('tw', 'Taiwan')} className="button text-center">Taiwan</button>
+            </div>
+            <div className="fill col-sm-12 col-md-4"></div>
+            <div className="col-sm-12 col-md-4">
+              <button onClick={() => this.setRegion('kr', 'Korea')} className="button text-center">Korea</button>
+            </div>
+          </div>
         </div>
-        <NavLink onClick={() => this.setRegion('us', 'Americas')} to={"/Home"}>
-          <button className="button col-xs-12 col-md-6 text-center btn-lg btn">Americas</button>
-        </NavLink>
-        <NavLink onClick={() => this.setRegion('eu', 'Europe')} to={"/Home"}>
-          <button className="button col-xs-12 col-md-6 text-center btn-lg btn">Europe</button>
-        </NavLink>
-        <NavLink onClick={() => this.setRegion('tw', 'Taiwan')} to={"/Home"}>
-          <button className="button col-xs-12 col-md-6 text-center btn-lg btn">Taiwan</button>
-        </NavLink>
-        <NavLink onClick={() => this.setRegion('kr', 'Korea')} to={"/Home"}>
-          <button className="button col-xs-12 col-md-6 text-center btn-lg btn">Korea</button>
-        </NavLink>
       </div>
     );
   }

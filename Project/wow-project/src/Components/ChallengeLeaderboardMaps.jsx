@@ -16,7 +16,6 @@ class ChallengeLeaderboardMaps extends Component {
       fetch(url).then((response) => {
         return response.json();
       }).then((data) => {
-        console.log('DATA CHALLENGE', data);
         this.props.setChallengeLeaderboard(data.challenge);
       }).catch((error) => {
         this.props.setChallengeLeaderboard('ERROR');
@@ -40,8 +39,8 @@ class ChallengeLeaderboardMaps extends Component {
       );
     } else {
       render = (
-        <div>
-          <ul>
+        <div className="container">
+          <ul className="list-group">
             {this.listChallengeMaps()}
           </ul>
         </div>
@@ -53,7 +52,7 @@ class ChallengeLeaderboardMaps extends Component {
   listChallengeMaps() {
     return this.props.challenge.map(challenge => {
       return (
-        <li key={this.props.challenge.indexOf(challenge)} onClick={() => this.setSelectedChallenge(challenge)}> <NavLink to={`${this.props.match.url}/` + challenge.map.slug}>{challenge.map.name}</NavLink></li>
+        <li className="list-group-item" key={this.props.challenge.indexOf(challenge)} onClick={() => {this.setSelectedChallenge(challenge)}}> <NavLink to={`${this.props.match.url}/` + challenge.map.slug}>{challenge.map.name}</NavLink></li>
       );
     });
   }
@@ -82,6 +81,7 @@ class ChallengeLeaderboardMaps extends Component {
       newRender = (
         <div>
           {this.requireCheck()}
+          <h2 className="text-center tittle-region">Select Challenge</h2>
           <div>
             {this.renderChallengeMaps()}
           </div>
@@ -91,8 +91,8 @@ class ChallengeLeaderboardMaps extends Component {
       newRender = (
         <div>
           {this.requireCheck()}
-          <div>
-            <p>LOADING LEADERBOARD</p>
+          <div className="container text-center">
+            <p className="loading">LOADING CHALLENGES...</p>
           </div>
         </div>
       );

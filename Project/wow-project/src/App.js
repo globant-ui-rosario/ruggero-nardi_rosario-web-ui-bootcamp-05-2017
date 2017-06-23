@@ -18,24 +18,30 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div>
-          <NavigationBar />
-          <Route exact path={'/'} component={RegionPick} />
-          <Route path={'/Required'} component={RegionPick}/>
-          <Route path={'/RealmRequired'} component={Home}/>
-          <Route path={'/Realm/:realmId'} component={RealmHome}/>
-          <Route path={'/Home'} component={Home} />
-          <Route path={'/CharacterSearch'} component={CharacterSearch} />
-          <Route path={'/CharacterSearch/:characterId'} component={CharacterDetails}/>
-          <Route path={'/GuildSearch'} component={GuildSearch} />
-          <Route path={'/GuildSearch/:guildId'} component={GuildDetails}/>
-          <Route path={'/Leaderboards'} component={PvpLeaderboardsNav} />
-          <Route path={'/Leaderboards/:leaderboardId'} component={PvpLeaderboard}/>
-          <Route path={'/Leaderboard/Challenge'} component={ChallengeLeaderboardMaps}/>
-          <Route path={'/Leaderboard/Challenge/:challengeId'} component={ChallengeLeaderboard}/>
-        </div>
+        <div className="container-fluid">
+          <div className="row">
+            <header className="header text-center hidden-xs">
+            </header>
+          </div>
+          <div className="main-content row">
+              <NavigationBar />
+              <Route exact path={'/'} component={RegionPick} />
+              <Route path={'/Required'} component={RegionPick} />
+              <Route path={'/RealmRequired'} component={Home} />
+              <Route path={'/Realm/:realmId'} component={RealmHome} />
+              <Route path={'/Home'} component={Home} />
+              <Route path={'/CharacterSearch'} component={CharacterSearch} />
+              <Route path={'/CharacterSearch/:characterId'} component={CharacterDetails} />
+              <Route path={'/GuildSearch'} component={GuildSearch} />
+              <Route path={'/GuildSearch/:guildId'} component={GuildDetails} />
+              <Route path={'/Leaderboards'} component={PvpLeaderboardsNav} />
+              <Route path={'/Leaderboards/:leaderboardId'} component={PvpLeaderboard} />
+              <Route path={'/Leaderboard/Challenge'} component={ChallengeLeaderboardMaps} />
+              <Route path={'/Leaderboard/Challenge/:challengeId'} component={ChallengeLeaderboard} />
+            </div>
+          </div>
       </Router>
-    );
+        );
   }
 }
 

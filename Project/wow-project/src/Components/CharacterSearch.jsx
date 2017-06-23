@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Redirect, NavLink } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 class PlayerSearch extends Component {
 
@@ -15,7 +15,7 @@ class PlayerSearch extends Component {
     let newRender;
     if (this.props.region) {
       if (this.props.realm) {
-        newRender = (<p>Searching character in {this.props.realm.name}</p>);
+        newRender = (<p className="tittle-region">Searching character in {this.props.realm.name}</p>);
       } else {
         newRender = <Redirect to='/RealmRequired' />
       }
@@ -27,23 +27,25 @@ class PlayerSearch extends Component {
 
 
   validateSearch() {
+    let validation;
     if (this.state.search) {
-      return (
-        <button>
-          <NavLink to={`${this.props.match.url}/` + this.state.search}>Search</NavLink>
-        </button>
+      validation = (
+        <button className="search-button" onClick={() => this.props.history.push(`${this.props.match.url}/` + this.state.search)}></button>
       );
     } else {
-      return null;
+      validation = null;
     }
+    return validation;
   }
 
   render() {
     return (
-      <div>
+      <div className="container">
         {this.requireCheck()}
-        <input placeholder='Character Name here...' onChange={(event) => { this.setState({ search: event.target.value }) }} type="text" />
-        {this.validateSearch()}
+        <input className="form-control" placeholder='Enter Character Name here...' onChange={(event) => { this.setState({ search: event.target.value }) }} type="text" />
+        <div className="text-center">
+          {this.validateSearch()}
+        </div>
       </div>
     );
   }

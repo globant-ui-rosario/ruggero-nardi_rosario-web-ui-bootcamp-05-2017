@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { setRealms } from '../Actions/setRealms';
 import { setRealm } from '../Actions/setRealm';
 
@@ -30,42 +30,45 @@ class RealmStatus extends Component {
   }
 
   listRealms() {
+    let newList;
     if (this.props.region.realms === 'ERROR') {
-      return (
+      newList = (
         <tr>
           <td>Unexpected Error!</td>
           <td colSpan="3"><button onClick={() => this.fetchRealmsData()}>RETRY</button></td>
         </tr>
       );
     } else {
-      return this.props.region.realms.map(realm => {
+      newList = this.props.region.realms.map(realm => {
         if (realm.name.toLowerCase().startsWith(this.state.search.toLowerCase())) {
           let status;
           let colorClass;
           if (realm.status) {
             status = 'ONLINE';
-            colorClass = 'green'
+            colorClass = 'online'
           } else {
             status = 'OFFLINE';
-            colorClass = 'red';
+            colorClass = 'offline';
           }
-          return (
-            <tr key={realm.name}>
-              <td>{status}</td>
-              <td>
-                <NavLink to={'/Realm/' + realm.name} onClick={() => this.props.setRealm(realm)} >
-                  {realm.name}
-                </NavLink>
-              </td>
+          newList = (
+            <tr key={realm.name} onClick={() => this.setSelectedRealm(realm)}>
+              <td className={colorClass}>{status}</td>
+              <td>{realm.name}</td>
               <td>{realm.type}</td>
               <td>{realm.population}</td>
             </tr>
           );
-        }
+        } else newList = null;
+        return newList;
       });
+      return newList;
     }
   }
 
+  setSelectedRealm(realm) {
+    this.props.setRealm(realm);
+    this.props.history.push('/Realm/' + realm.name);
+  }
 
 
   render() {
@@ -74,10 +77,10 @@ class RealmStatus extends Component {
       if (this.props.region.realms) {
         newRender = (
           <div className='container'>
-            <input placeholder="Search Realm..." type="text" onChange={(event) => this.setState({ search: event.target.value })} />
+            <input className="form-control" placeholder="Search Realm..." type="text" onChange={(event) => this.setState({ search: event.target.value })} />
             <div className="table-responsive">
-              <table className='table table-striped table-bordered'>
-                <thead>
+              <table className="realm-table table table-hover table-bordered">
+                <thead className="table-head">
                   <tr>
                     <th>STATUS</th>
                     <th>REALM</th>
@@ -85,7 +88,7 @@ class RealmStatus extends Component {
                     <th>POPULATION</th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody className="table-body">
                   {this.listRealms()}
                 </tbody>
               </table>
@@ -95,7 +98,7 @@ class RealmStatus extends Component {
       } else {
         newRender = (
           <div>
-            <p>Loading Realms States</p>
+            <p className="loading">LOADING REALM STATUS...</p>
           </div>
         );
       }
@@ -108,4 +111,4 @@ const mapStateToProps = (state) => ({
   region: state.region
 });
 
-export default connect(mapStateToProps, { setRealms, setRealm })(RealmStatus);
+export default withRouter(connect(mapStateToProps, { setRealms, setRealm })(RealmStatus));

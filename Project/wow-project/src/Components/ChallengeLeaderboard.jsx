@@ -5,45 +5,49 @@ class ChallengeLeaderboard extends Component {
 
 
   renderTop10() {
+    let newRender;
     if (this.props.challenge) {
       let top10 = this.props.challenge.groups.slice(0, 10);
-      return (
-        <ul>
+      newRender = (
+        <ul className="list-group">
           {top10.map(map => {
-            return (
-              <li key={map.ranking}>
+            return newRender = (
+              <li className="list-group-item" key={map.ranking}>
                 {map.ranking} - {map.date} - {map.faction}
-                <ul>
+                <ul className="list-group">
                   {map.members.map(member => {
                     if (member.character) {
-                      return (<li key={member.character.name} >{member.character.name}</li>);
+                      newRender = (<li className="list-group-item" key={member.character.name} >{member.character.name}</li>);
                     } else {
-                      return null;
-                    }
+                      newRender = null;
+                    } return newRender;
                   })}
                 </ul>
               </li>
-              );
+            );
           })}
         </ul>
       );
     }
+    return newRender
   }
 
   render() {
+    let newRender;
     if (this.props.challenge) {
-      return (
+      newRender = (
         <div>
-          <h2>{this.props.challenge.map.name}</h2>
-          <h3>{this.props.challenge.realm.name}</h3>
-          <div>
+          <h2 className="tittle-region">{this.props.challenge.map.name}</h2>
+          <h3 className="tittle-region">{this.props.challenge.realm.name}</h3>
+          <div className="container text-center">
             {this.renderTop10()}
           </div>
         </div>
       );
     } else {
-      return null;
+      newRender = null;
     }
+    return newRender;
   }
 }
 

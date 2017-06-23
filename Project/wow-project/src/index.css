@@ -1,45 +1,304 @@
 body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  background-color: #010633;
+  background-image: url(http://media.blizzard.com/wow/media/artwork/wow-bc/region-blasted-lands-full.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  overflow: visible;
+  background-position: top;
 }
-li { 
-  cursor: pointer;
-  cursor: hand;
+@keyframes loading-text {
+    0% {color:red; text-shadow: 0 0 4px orangered;}
+    100%   {color:green; text-shadow: 0 0 4px lightgreen;}
+}
+@keyframes search-button {
+    0% {height: 0}
+    100%   {height: 80px}
+}
+.main-content {
+  flex: 1 0 auto;
+}
+.header{
+  background-color: black;
+  background-image: url(./img/header.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height:150px;
+}
+.footer {
+  height: 100px;
+  background-color: darkgrey;
 }
 .button {
-  background-color: #041451;
-  border: 1px solid lightgreen;
+  background-color: #7c5216;
+  font-family: 'Roboto', sans-serif;
+  font-size: 3em;
+  color: black;
+  font-weight: bold;
+  width: 100%;
+  height: 100px;
+  border: none;
+  border-radius: 5px;
   transition: all 0.1s ease-in-out;
+}
+.button:hover {
+  background-color: #c6964f;
+  color: white;
+  text-shadow: 0 0 10px yellowgreen;
+  font-size: 3.2em;
+}
+.tittle-region {
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  text-shadow: 0 0 10px #c6964f,
+               0 0 5px yellowgreen;
+  color: #3a1e19;
+  font-weight: bold;
+  font-size: 3.5em;
+}
+.fill {
+  height: 50px;
+}
+.loading {
+  font-family: 'Roboto', sans-serif;
+  font-size: 2em;
+  animation-name: loading-text;
+  animation-duration: 0.5s;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+}
+.online {
+  font-weight: bold;
+  color: green;
+  text-shadow: 0 0 4px lightgreen;
+}
+.offline {
+  font-weight: bold;
+  color: red;
+  text-shadow: 0 0 4px orangered;
+}
+.table-head th {
+  background-color: rgba(198, 150, 79, 0.8);
+  font-weight: bold;
+  font-size: 1.2em;
+  text-align: center;
+}
+.table-body td{
+  background-color: rgba(232, 179, 102, 0.7);
+  cursor: pointer;
+}
+.realm-home {
+  text-align: center;
+}
+.guild-search-icon {
+  width: 400px;
+  height: 500px;
+  margin: auto;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  background-image: url('./img/guildSearch.png');
+  background-size: cover;
+  transition: all 0.2s ease-out;
+}
+.guild-search-icon:hover{
+  width: 410px;
+}
+.character-search-icon {
+  width: 400px;
+  height: 500px;
+  margin: auto;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  background-image: url('./img/characterSearch.png');
+  background-size: cover;
+  transition: all 0.2s ease-out;
+}
+.character-search-icon:hover{
+  width: 410px;
+}
+.realms-list-button {
+  width: 400px;
+  height: 200px;
+  margin: auto;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  background-image: url('./img/realmsList.png');
+  background-size: cover;
+  transition: all 0.2s ease-out;
+}
+.realms-list-button:hover {
+  width: 410px;
+}
+.search-button {
+  width: 200px;
+  height: 80px;
+  background-color: transparent;
+  background-image: url('./img/searchButton.png');
+  background-size: cover;
+  border: none;
+  animation-name: search-button;
+  animation-duration: 1s;
+}
+.button-2v2 {
+  width: 400px;
+  height: 200px;
+  margin: auto;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  background-image: url('./img/leaderboard2v2Button.png');
+  background-size: cover;
+  transition: all 0.2s ease-out;
+}
+.button-3v3 {
+  width: 400px;
+  height: 200px;
+  margin: auto;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  background-image: url('./img/leaderboard3v3Button.png');
+  background-size: cover;
+  transition: all 0.2s ease-out;
+}
+.button-rbg {
+  width: 400px;
+  height: 200px;
+  margin: auto;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  background-image: url('./img/leaderboardRBGButton.png');
+  background-size: cover;
+  transition: all 0.2s ease-out;
+}
+.thumbnail {
+  margin: auto;
+  border: 1px solid black;
+  width: 84px;
+  height: 84px;
+  background-image: url('./img/thumbnailNotFound.jpg');
+  background-size: cover;
+}
+.a-nav-link {
+  cursor: pointer;
+}
+.search-table {
+  font-size: 1.2em;
+}
+.search-table td {
+  font-weight: bold;
+  font-family: 'Roboto', sans-serif;
 }
 .character-tittle {
   font-weight: bold;
+  font-size: 2em;
+  font-family: 'Roboto', sans-serif;
+  text-shadow: 0 0 10px #c6964f,
+               0 0 5px yellowgreen;
   color: black;
-  text-shadow: 0 0 10px white;
 }
 .guild-tittle {
-  font-weight: bold;
+  font-family: 'Roboto', sans-serif;
+  text-shadow: 0 0 10px #c6964f,
+               0 0 5px yellowgreen;
   color: black;
-  text-shadow: 0 0 10px white;
-}
-.button:hover {
-  background-color: #153b77;
-  color: #397fef;
-  font-size: 1.5em;
 }
 .basic-info-list {
  list-style: none;
 }
 .basic-info-item {
-  font-size: 1.2em;
+  font-size: 1.3em;
+  text-align: left;
   color: lightcyan;
   text-shadow: 0 0 8px black;
 }
 .stats-info-list {
  list-style: none;
+ text-align: left;
 }
 .stats-info-item {
   color: lightgray;
   text-shadow: 0 0 4px black;
 }
+.region-button{
+  margin: 20px 0;
+}
+.player-details {
+  margin: auto;
+  z-index: 100;
+  border: 5px solid black;
+  border-radius: 10px;
+}
+.tittle-character-detail {
+  font-size: 3em;
+  font-family: 'Roboto', sans-serif;
+  text-shadow: 0 0 10px #c6964f,
+               0 0 5px yellowgreen;
+  color: black;
+  text-decoration: underline;
+}
+.tittle-average-item {
+  font-size: 2em;
+  font-family: 'Roboto', sans-serif;
+  text-shadow: 0 0 10px #c6964f,
+               0 0 5px yellowgreen;
+  color: black;
+}
+.list-group-item{
+  background-color: rgba(232, 179, 102, 0.7);
+}
+.second-image {
+  height: 100%;
+  margin: auto;
+  background-image: url('./img/noProfilePic.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 10px;
 
+}
+.poor {
+  color: grey;
+  text-shadow: 0 0 2px black;
+}
+.common {
+  color: #00ff00;
+  text-shadow: 0 0 2px black;
+
+}
+.rare {
+  color: #0000ff;
+  text-shadow: 0 0 2px black;
+  
+}
+.epic {
+  color: #aa00ff;
+  text-shadow: 0 0 1px black;
+  
+}
+.legendary{
+  color: #ff8000;
+  text-shadow: 0 0 2px black;  
+}
+.artifact {
+  color: #e6cc80;
+  text-shadow: 0 0 2px black;
+}
+.heirloom {
+  color: #e6cc80;
+  text-shadow: 0 0 2px black;
+}
+.wow-token {
+  color: #00ccff;
+  text-shadow: 0 0 2px black;
+}
