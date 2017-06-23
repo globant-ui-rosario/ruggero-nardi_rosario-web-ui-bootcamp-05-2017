@@ -1,0 +1,144 @@
+body {
+  background-color: lightsteelblue;
+  font-family: "Droid Sans", sans-serif;
+}
+header {
+  margin: auto;
+  text-align: center;
+  width: 90%;
+  max-width: 1000px;
+}
+.title {
+  margin: auto;
+  font-size: 3em;
+  color: blue;
+  text-shadow: 3px 3px 10px black;
+}
+.subtitle {
+  margin: auto;
+  font-size: 1.2em;
+}
+.navigation {
+  width: 90%;
+  max-width: 1000px;
+  margin: auto;
+  background-color: lightcyan;
+  height: 50px;
+}
+.navigation li {
+  list-style-type: none;
+  display: inline-block;
+  height: 100%;
+  margin: auto;
+  background-color: cyan;
+}
+.navigation li span{
+  margin: auto;
+  height: 100%;
+  display: inline-block;
+  line-height: 50px;
+  text-shadow: 0 0 5px navy;
+  transition: all 200ms ease;
+}
+.navigation li span:hover {
+  background-color: #00aaff;
+}
+.content {
+  position: relative;
+  margin: auto;
+  text-align: center;
+  width: 90%;
+  max-width: 1000px;
+}
+.content .second-title {
+  font-size: 1.2em;
+  text-shadow: 3px 3px 10px black;
+}
+.content .left{
+  min-height: 300px;
+  width: 50%;
+  margin: auto;
+  display: block;
+  float: left;
+}
+.content .right{
+  min-height: 300px;
+  width: 50%;
+  margin: auto;
+  display: block;
+  float: right;
+}
+.button {
+  clear: left;
+}
+.hidden-content {
+  clear: both;
+  min-height: 230px;
+}
+.hidden-text {
+  visibility: hidden;
+  color: rgba(0,0,0,0);
+}
+.visible-text {
+  visibility: visible;
+  text-align: center;
+  margin: auto;
+  color: rgba(0, 0, 0, 1);
+  font-size: 200px;
+  text-shadow: 0 0 30px navy;
+  transition: all 2s ease-in-out;
+}
+.small-text {
+  text-align: center;
+  margin: auto;
+  color: rgba(0, 0, 0, 1);
+  font-size: 50px;
+  text-shadow: 0 0 30px navy;
+}
+.hidden-text-container-error {
+  clear: both;
+  height: 230px;
+  line-height: 230px;
+  background-color: red;
+  border-radius: 10%;
+  box-shadow: 0 0 60px red;
+}
+.button {
+  position: absolute;
+  left: 0;
+  color: green;
+  text-shadow: 0 0 3px greenyellow;
+  display: block;
+  margin: 0;
+}
+.search-results{
+  margin: 15px 15%;
+}
+.search-results,
+.search-results li a {
+  list-style: circle;
+  text-decoration: none;
+  text-align: left;
+  font-size: 1.2em;
+  color: purple;
+}
+.search-results li a:hover {
+  color: #C000C0;
+}
+.table-container {
+  margin: 50px auto;
+  text-align: center;
+  width: 90%;
+  max-width: 1000px;
+}
+.table, 
+th, 
+td {
+  border: 2px solid black;
+  border-collapse: collapse;
+  padding: 10px;
+  text-align: center;
+}
+
+
+
